@@ -1,1 +1,0 @@
-# Gemini-sh.github.io
