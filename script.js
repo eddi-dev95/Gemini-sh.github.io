@@ -9,7 +9,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 async function run() {
-  const prompt = "Write a story about an AI and magic";
+  const prompt = "Escribe un mensaje de despedida, a la introduccion de un atajo de apple";
 
   const result = await model.generateContent(prompt);
   const response = await result.response;
