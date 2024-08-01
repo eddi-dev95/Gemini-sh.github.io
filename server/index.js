@@ -13,22 +13,23 @@ app.get('/api/gemini', async (req, res) => {
   }
 
   try {
-    const response = await fetch('https://api.gemini.com/v1.5/generate', {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        // Parámetros de tu solicitud a Gemini (modelo, prompt, etc.)
+        "contents": [{
+          "parts":[{
+            "text": "Escribe un mensaje de despedida a la introduccion de un atajo de apple; que trabaja con Gemini AI como chatbot. No uses markdown, quiero el texto limpio, amigable y llamativo"}]}]
       }),
     });
 
     const data = await response.json();
-    res.json(data);
+    const mensaje = data.candidates[0].content.parts[0].text;
+    res.json({ mensaje });
   } catch (error) {
-    console.error('Error al llamar a la API de Gemini:', error);
-    res.status(500).json({ error: 'Error del servidor' });
+    console.error('Error al hacer la solicitud:', error);
   }
 });
 
