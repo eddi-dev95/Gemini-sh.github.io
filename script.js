@@ -1,18 +1,36 @@
-const API_KEY = "AIzaSyBbvg1_n1CcmL-so3d3cFulwTYTBM_Ogg4";
+// Función para hacer la solicitud POST
+async function hacerSolicitud(texto) {
+  const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBbvg1_n1CcmL-so3d3cFulwTYTBM_Ogg4';
 
-// Access your API key (see "Set up your API key" above)
-const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const headers = {
+    'Content-Type': 'application/json',
+  };
 
-async function run() {
-  const prompt = "Escribe un mensaje de despedida, a la introduccion de un atajo de apple";
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  
-  document.getElementById("mensaje").textContent = text;
-  //console.log(text);
+  const body = {
+    prompt: `Escribe un mensaje de bienvenida personalizado para un usuario que acaba de visitar nuestra página web.`,
+    temperature: 0.7 // Ajusta la creatividad del modelo
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+    const mensaje = data.text;
+    mostrarMensaje(mensaje);
+  } catch (error) {
+    console.error('Error al hacer la solicitud:', error);
+  }
 }
 
-run();
+// Función para mostrar el mensaje en la página
+function mostrarMensaje(mensaje) {
+  const elementoMensaje = document.getElementById('mensaje');
+  elementoMensaje.textContent = mensaje;
+}
 
+// Llamar a la función para hacer la solicitud
+hacerSolicitud();
