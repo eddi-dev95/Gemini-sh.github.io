@@ -13,12 +13,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
       - name: Insert API key into script.js
         run: |
-          sed -i "s|const apiKey = '';|const apiKey = '${{ secrets.KEY }}';|" ./script.js
+          node -e "const fs = require('fs'); let content = fs.readFileSync('./script.js', 'utf8'); content = content.replace('const apiKey = \'\';', 'const apiKey = \'${{ secrets.KEY }}\';'); fs.writeFileSync('./script.js', content);"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public  # Publica desde la raíz del repositorio
+          publish_dir: .  # Publica desde la raíz del repositorio
