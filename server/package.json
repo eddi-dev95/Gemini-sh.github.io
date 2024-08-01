@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Servidor para API de Gemini",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "start": "node index.js"
   },
