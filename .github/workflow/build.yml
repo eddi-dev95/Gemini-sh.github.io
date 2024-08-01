@@ -1,34 +1,24 @@
-name: Deploy to GitHub pages
+name: Deploy to GitHub Pages
 
 on:
- push:
-  branches:
-   -main
+  push:
+    branches:
+      - main  # O la rama que utilices para despliegue
 
 jobs:
- buld:
-   run-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-steps:
- -name: Checkout repository
-  uses: actions/checkout@v2
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
--name: Setup Node.js
-  uses: actions/setup-node@v2
-  with:
-   node-version: '18'
+      - name: Insert API key into script.js
+        run: |
+          sed -i "s|const apiKey = '';|const apiKey = '${{ secrets.KEY }}';|" ./script.js
 
- -name: Install dependencies
-  run: npm install
-
- -name: Build project
-  run: npm run build
-
--name: Insert private key
- run: echo "const PRIVATE_KEY = '$ {{ secrets.KEY }}';" > ./public/script.js
-
-  -name: Deploy to GitHub Pages
-   user: peaceiris/actions-gh-pages@v3
-   with: 
-    github_token: ${{secrets.GITHUB_TOKEN}}
-    public_dir: ./public
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .  # Publica desde la raíz del repositorio
