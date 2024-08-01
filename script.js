@@ -7,8 +7,9 @@ async function hacerSolicitud(texto) {
   };
 
   const body = {
-    prompt: `Escribe un mensaje de bienvenida personalizado para un usuario que acaba de visitar nuestra página web.`,
-    temperature: 0.7 // Ajusta la creatividad del modelo
+      'contents': [{
+        'parts':[{
+          'text': 'hazme un mensaje de bienvenida a un atajo de apple con funcion de chatbot con la ayuda de Gemini de Google.'}]}]
   };
 
   try {
