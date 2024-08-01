@@ -1,0 +1,31 @@
+name: Deploy to GitHub pages
+
+on:
+ push:
+  branches:
+   -main
+
+jobs:
+ buld:
+   run-on: ubuntu-latest
+
+steps:
+ -name: Checkout repository
+  user: actions/checkout@v2
+  with:
+   node-version: '18'
+
+ -name: Install dependencies
+  run: npm install
+
+ -name: Build project
+  run: npm run build
+
+  -name: Deploy to GitHub Pages
+   user: peasceiris/actions-gh-pages@v3
+   with: 
+    github_token: ${{secrets.GITHUB_TOKEN}}
+    public_dir: ./public
+
+  -name: Set private key
+   run: echo "KEY=$ {{ secrets.KEY }}" > .env
