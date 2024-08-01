@@ -1,7 +1,7 @@
 const apiKey = 'AIzaSyBbvg1_n1CcmL-so3d3cFulwTYTBM_Ogg4';
 // Función para hacer la solicitud POST
-async function hacerSolicitud(texto) {
-  const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}';
+async function GetRequest(texto) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
   const headers = {
     'Content-Type': 'application/json',
@@ -31,4 +31,4 @@ async function hacerSolicitud(texto) {
 }
 
 // Llama a la función para mostrar el mensaje
-hacerSolicitud();
+GetRequest();
