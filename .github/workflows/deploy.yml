@@ -15,10 +15,10 @@ jobs:
 
       - name: Inject API Key into script.js
         run: |
-          echo "const GEMINI_API_KEY = '${{ secrets.GEMINI_API_KEY }}';" > ./code/script.js
+          echo "const GEMINI_API_KEY = '${{ secrets.GEMINI_API_KEY }}';" > ./script.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./code # Asegúrate de que el directorio de publicación sea el correcto
+          publish_dir: . # Asegúrate de que el directorio de publicación sea el correcto
