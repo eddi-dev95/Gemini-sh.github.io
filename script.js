@@ -1,4 +1,4 @@
-const apiKey = KEY;
+const apiKey = PRIVATE_KEY;
 // Función para hacer la solicitud POST
 async function GetRequest(texto) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
