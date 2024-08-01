@@ -1,4 +1,6 @@
-const apiKey = 'AIzaSyBbvg1_n1CcmL-so3d3cFulwTYTBM_Ogg4';
+require('dotenv').config();
+
+const apiKey = process.env.KEY;
 // Función para hacer la solicitud POST
 async function GetRequest(texto) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
