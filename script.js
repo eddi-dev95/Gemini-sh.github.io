@@ -10,7 +10,7 @@ async function GetRequest(texto) {
   const body = {
       'contents': [{
         'parts':[{
-          'text': 'hazme un mensaje de bienvenida a un atajo de apple con funcion de chatbot con la ayuda de Gemini de Google. No uses Markdown en tu respuesta, quiero el texto limpio, corto y legible'}]}]
+          'text': 'Escribe un mensaje de despedida a una introduccion de un atajo de apple. Ejemplo: ¡Espero que lo disfutes!. No uses markdown, quiero el texto limpio, legible, amigable y llamativo'}]}]
   };
 
   try {
