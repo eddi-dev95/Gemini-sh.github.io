@@ -1,6 +1,8 @@
+const config = require('./config.json');
+const apiKey = config.apiKey;
 // Función para hacer la solicitud POST
 async function hacerSolicitud(texto) {
-  const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBbvg1_n1CcmL-so3d3cFulwTYTBM_Ogg4';
+  const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}';
 
   const headers = {
     'Content-Type': 'application/json',
@@ -9,7 +11,7 @@ async function hacerSolicitud(texto) {
   const body = {
       'contents': [{
         'parts':[{
-          'text': 'hazme un mensaje de bienvenida a un atajo de apple con funcion de chatbot con la ayuda de Gemini de Google.'}]}]
+          'text': 'hazme un mensaje de bienvenida a un atajo de apple con funcion de chatbot con la ayuda de Gemini de Google. No uses Markdown en tu respuesta, quiero el texto limpio, corto y legible'}]}]
   };
 
   try {
