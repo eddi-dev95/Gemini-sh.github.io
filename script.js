@@ -20,18 +20,14 @@ async function hacerSolicitud(texto) {
     });
 
     const data = await response.json();
-    const mensaje = data.text;
-    mostrarMensaje(mensaje);
+    const  
+ mensaje = data.candidates[0].content.parts[0].text;
+    const elementoMensaje = document.getElementById('mensaje');
+    elementoMensaje.textContent = mensaje;
   } catch (error) {
     console.error('Error al hacer la solicitud:', error);
   }
 }
 
-// Función para mostrar el mensaje en la página
-function mostrarMensaje(mensaje) {
-  const elementoMensaje = document.getElementById('mensaje');
-  elementoMensaje.textContent = mensaje;
-}
-
-// Llamar a la función para hacer la solicitud
+// Llama a la función para mostrar el mensaje
 hacerSolicitud();
