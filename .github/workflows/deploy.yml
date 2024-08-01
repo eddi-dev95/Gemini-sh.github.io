@@ -17,6 +17,9 @@ jobs:
         run: |
           echo "const GEMINI_API_KEY = '${{ secrets.GEMINI_API_KEY }}';" > ./script.js
 
+      - name: Print script.js for debugging
+        run: cat ./script.js
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
