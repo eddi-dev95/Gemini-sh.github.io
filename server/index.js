@@ -1,5 +1,5 @@
-const express = require('express');
-const fetch = require('node-fetch');
+const express = import('express');
+const fetch = import('node-fetch');
 const app = express();
 
 // Puedes usar un puerto definido por Render o 3000 en desarrollo
