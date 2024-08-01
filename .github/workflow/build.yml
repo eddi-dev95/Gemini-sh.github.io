@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # O la rama que utilices para despliegue
+      - main # O la rama que utilices para despliegue
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "14"
 
       - name: Insert API key into script.js
         run: |
@@ -26,4 +26,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # Publica desde la raíz del repositorio
+          publish_dir: . # Publica desde la raíz del repositorio
