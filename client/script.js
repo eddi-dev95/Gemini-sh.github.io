@@ -1,6 +1,6 @@
 const getGeminiMessage = async () => {
   try {
-    const response = await fetch('https://gemini-shv1-0.onrender.com'); 
+    const response = await fetch('https://gemini-shv1-0.onrender.com/api/gemini'); 
     const data = await response.json();
 
     // Accede al mensaje desde la respuesta JSON
