@@ -15,7 +15,7 @@ jobs:
 
       - name: Inject API Key into script.js
         run: |
-          echo "const API_GEMINI = '${{ AIzaSyBbvg1_n1CcmL-so3d3cFulwTYTBM_Ogg4 }}';" > ./script.js
+          echo "const API_GEMINI = 'AIzaSyBbvg1_n1CcmL-so3d3cFulwTYTBM_Ogg4';" > ./script.js
 
       - name: Print script.js for debugging
         run: cat ./script.js
