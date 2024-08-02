@@ -1,0 +1,27 @@
+name: Example for inyect api in script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Inject API Key into script.js
+        run: |
+          echo "const API_GEMINI = '${{ AIzaSyBbvg1_n1CcmL-so3d3cFulwTYTBM_Ogg4 }}';" > ./script.js
+
+      - name: Print script.js for debugging
+        run: cat ./script.js
+
+      - name: Example for inyect api in script
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
